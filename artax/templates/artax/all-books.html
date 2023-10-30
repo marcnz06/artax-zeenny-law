@@ -1,0 +1,75 @@
+{% extends 'artax/layout.html' %}
+{% block title %}Books{% endblock %}
+{% block content %}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Book Library</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url "index" %}">Dashboard</a></li>
+          <li class="breadcrumb-item active">Books</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="card-title">Books</h5>
+                </div>
+                <div class="col-6 text-end mt-3">
+                      <label class="form-check-label disabled" for="inlineFormSelect" hidden="hidden">
+                        Per page:
+                      </label>
+                    <a href="{% url 'book_queries' %}" class="btn btn-success">Query Books</a>
+                </div>
+            </div>
+              <div class="table-responsive-sm table-responsive-md">
+                <table class="table table-hover datatable" >
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Section</th>
+                    <th scope="col">Publisher</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Publishing Date</th>
+                    <th scope="col">Special ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for book in page_obj %}
+                  <tr class="clickable" onclick="window.location='{% url 'show_book' book_id=book.id %}'" style="cursor: pointer;">
+                    <th scope="row">{{ book.id }}</th>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author.name}}</td>
+                    <td>{{book.type.name}}</td>
+                    <td>{{book.section}}</td>
+                    <td>{{book.publisher}}</td>
+                    <td>{{book.location.code}}</td>
+                    <td>{{book.publishing_date}}</td>
+                    <td>{{book.lib_id}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}
