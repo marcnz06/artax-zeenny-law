@@ -1,6 +1,5 @@
 /media/
 /static/
-/logs/
 logs/app.log
 logs/books.log
 logs/users.log
