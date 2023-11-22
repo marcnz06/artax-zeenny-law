@@ -1,0 +1,75 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}Zeenny Law Firm Book Report{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block header %}
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <a class="logo d-flex align-items-center" >
+            <img src="{% static 'main/img/zlf-black.png' %}" style="height: 40px;" alt="">&nbsp;&nbsp;
+            <span class="">Zeenny Law Firm</span>
+        </a>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Book Report by {{ parameters }}</h1>
+    </div>
+
+
+            <div class="card-body">
+                <table class="table table-sm " >
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Section</th>
+                    <th scope="col">Publisher</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Publishing Date</th>
+                    <th scope="col">Special ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <th scope="row">{{ book.id }}</th>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author.name}}</td>
+                    <td>{{book.type.name}}</td>
+                    <td>{{book.section}}</td>
+                    <td>{{book.publisher}}</td>
+                    <td>{{book.location.code}}</td>
+                    <td>{{book.publishing_date}}</td>
+                    <td>{{book.lib_id}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+
+            </div>
+
+  </main>
+{% endblock %}
+{% block footer %}
+    <footer id="footer" class="footer">
+    <div class="copyright">
+        Report generated on behalf of <strong><span>Zeenny Law Firm</span></strong> by the Advanced Ressource Tracking and Execution System (ARTAX)
+    </div>
+</footer>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up"></i>H</a>
+
+
+</body>
+</html>
+{% endblock %}
