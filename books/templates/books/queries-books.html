@@ -78,9 +78,9 @@
                                         <input type="text" class="form-control" id="inputPublisher" placeholder="Enter a publisher name" name="publisher">
                                     </div>
                                     <div class="text-center">
-                                        <button class="btn btn-success me-2" id="web_submit">Query
+                                        <button class="btn btn-success me-2" name="submit_button" value="web">Query
                                         </button>
-                                        <button class="btn btn-danger" id="pdf_submit">Report
+                                        <button class="btn btn-danger" name="submit_button" value="pdf">Report
                                         </button>
                                     </div>
                                 </div>
@@ -148,13 +148,4 @@
             </div>
         </section>
     </main>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const web = document.getElementById('web_submit')
-            const pdf = document.getElementById('pdf_submit')
-            web.addEventListener('click', event => {
-                
-            })
-        })
-    </script>
 {% endblock %}

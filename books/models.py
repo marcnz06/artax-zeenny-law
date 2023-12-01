@@ -54,6 +54,7 @@ class Book(models.Model, DirtyFieldsMixin):
 
 
 class Author(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -61,6 +62,7 @@ class Author(models.Model):
 
 
 class Type(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=200)
     code = models.CharField(max_length=3)
 
@@ -69,6 +71,7 @@ class Type(models.Model):
 
 
 class Location(models.Model):
+    id = models.BigAutoField(primary_key=True)
     code = models.CharField(max_length=200)
 
     def __str__(self):
@@ -76,6 +79,7 @@ class Location(models.Model):
 
 
 class Language(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=250)
     code = models.CharField(max_length=3)
 

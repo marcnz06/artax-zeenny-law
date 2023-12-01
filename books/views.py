@@ -11,6 +11,7 @@ from django.core.serializers import serialize
 from docx2pdf import convert
 from django.conf import settings
 import logging
+import comtypes.client
 from docxtpl import DocxTemplate
 import os
 
@@ -181,7 +182,6 @@ def book_queries(request):
 
 @login_required
 def query_books_by(request):
-    return_type = request.GET.get("web_or_pdf")
     book_query_param = request.GET.get("book_query_param")
     book_param = request.GET.get("name")
     books = Book.objects.all().order_by("id")
@@ -217,7 +217,7 @@ def query_books_by(request):
         context = {'param': "book"}
         return render(request, "main/record-404.html", context)
     else:
-        if return_type == 'web':
+        if request.GET.get('submit_button') == 'web':
             page_number = request.GET.get('page')
             paginator = Paginator(books, per_page)
             page_obj = paginator.get_page(page_number)
@@ -241,9 +241,18 @@ def query_books_by(request):
             context.update(params)
             doc.render(context)
             doc.save(new_path)
-            convert(new_path, os.path.join(settings.BASE_DIR, 'book-query-edit.pdf'))
+            # comtypes.CoInitialize()
+            # pdf_path = os.path.join(settings.BASE_DIR, 'book-query-edit.pdf')
+            # word = comtypes.client.CreateObject('Word.Application')
+            # pdf_format = 17
+            # word.Visible = False
+            # in_file = word.Documents.Open(new_path)
+            # in_file.SaveAs(pdf_path, FileFormat=pdf_format)
+            # in_file.Close()
+            # word.Quit()
+            # comtypes.CoUninitialize()
             response = FileResponse(open(new_path, 'rb'))
-            response['Content-Disposition'] = 'attachement; filename="output.docx"'
+            response['Content-Disposition'] = 'attachement; filename="book-report.docx"'
             return response
 
 

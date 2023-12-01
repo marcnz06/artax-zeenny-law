@@ -6,8 +6,10 @@ from django.core.validators import EmailValidator
 
 
 class User(AbstractUser):
+    id = models.BigAutoField(primary_key=True)
     email = models.EmailField(blank=True, unique=True, validators=[EmailValidator(
-        message="Please enter a valid email address.")])
+        message="Please enter a valid email address."
+    )])
     about = models.TextField()
     job = models.CharField(max_length=200)
     address = models.TextField()
