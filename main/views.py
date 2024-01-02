@@ -92,8 +92,6 @@ def contact(request):
     return render(request, "main/contact.html")
 
 
-# TODO 1 Users Handling ################################################################################################
-
 @csrf_protect
 def login_view(request):
     if request.user.is_authenticated:
@@ -119,6 +117,13 @@ def login_view(request):
             login(request, user)
             return redirect('main:profile', username=user.username)
     return render(request, "main/login.html")
+
+
+@staff_required
+@login_required(login_url='login')
+def all_users(request):
+    users = User.objects.all()
+    return render(request, 'main/all-users.html', {'users': users})
 
 
 @staff_required
@@ -157,6 +162,7 @@ def new_user(request):
             role = request.POST.get("role")
             if role == '1':
                 user.is_superuser = True
+                user.groups.add(Group.objects.get(name="System Administrator"))
             elif role == '2':
                 user.is_staff = True
                 user.groups.add(Group.objects.get(name="Office Administrator"))
@@ -213,8 +219,6 @@ def profile(request, username):
     context = {'target_user': user}
     for user_group in user.groups.values_list('name', flat=True):
         context['clearance'] = user_group
-    if user.is_superuser:
-        context['clearance'] = 'System Administrator'
     return render(request, "main/users-profile.html", context=context)
 
 

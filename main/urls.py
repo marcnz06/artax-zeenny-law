@@ -14,6 +14,7 @@ urlpatterns = [
     path("faq/", views.faq, name="faq"),
     path("contact/", views.contact, name="contact"),
     path("login/", views.login_view, name="login"),
+    path("users/", views.all_users, name="all_users"),
     path("register/", views.new_user, name="register"),
     path("confirm/<str:uidb64>/<str:token>/", views.confirm_email, name="verify_email"),
     path("users/<str:username>/", views.profile, name="profile"),
