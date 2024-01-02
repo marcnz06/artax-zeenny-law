@@ -131,22 +131,26 @@
 
 
         <li class="nav-heading">Books</li>
-        {% nav_link 'books:all_books' 'Books' 'journal-bookmark' %}
-        {% nav_link 'books:new_book' 'New Book' 'journal-plus' %}
-        {% nav_link 'books:book_queries' 'Query Books ' 'search' %}
-
-        <hr>
-        <li class="nav-heading">Users</li>
+        {% nav_link 'books:all_books' 'Books' 'bi bi-journal-bookmark' %}
+        {% nav_link 'books:new_book' 'New Book' 'bi bi-journal-plus' %}
+        {% nav_link 'books:book_queries' 'Query Books ' 'bi bi-search' %}
         {% if user.is_staff %}
-            {% nav_link 'main:register' 'Register' 'person-plus' 'True' %}
-            {% nav_link 'admin:index' 'Admin Panel' 'browser-edge' 'True' %}
+            <hr>
+            <li class="nav-heading">Users</li>
+            {% nav_link 'main:all_users' 'Users' 'ri-group-fill'%}
+            {% nav_link 'main:register' 'Register' 'bi bi-person-plus' 'True' %}
+            <hr>
+            <li class="nav-heading">General</li>
+            {% nav_link 'admin:index' 'Admin Panel' 'bi bi-browser-edge' 'True' %}
         {% endif %}
-        {% nav_link 'main:faq' 'F.A.Q' 'question-circle'%}
-        {% nav_link 'main:contact' 'Contact' 'envelope' %}
+        {% nav_link 'main:faq' 'F.A.Q' 'bi bi-question-circle' %}
+        {% nav_link 'main:contact' 'Contact' 'bi bi-envelope' %}
         
         {% if user.is_authenticated %}
-            {% nav_link 'main:profile' 'Profile ' 'file-person' username=user.username %}
-            {% nav_link 'main:logout' 'Logout' 'box-arrow-right' %}
+            {% nav_link 'main:profile' 'Profile ' 'bi bi-file-person' username=user.username %}
+            {% nav_link 'main:logout' 'Logout' 'bi bi-box-arrow-right' %}
+        {% else %}
+            {% nav_link 'main:login' 'Login' 'bi bi-box-arrow-in-right' %}
         {% endif %}
 
 

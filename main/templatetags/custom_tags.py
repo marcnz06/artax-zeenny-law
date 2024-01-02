@@ -17,6 +17,6 @@ def nav_link(context, view_name, text, icon, target=False, *args, **kwargs):
 
     url = reverse(view_name, args=args, kwargs=kwargs)
     if target:
-        return mark_safe(f"""<li class="{nav_class}"><a class="{link_class}" target="_blank" href="{url}"><i class="bi bi-{icon}"></i><span>{text}</span></a></li>""")
+        return mark_safe(f"""<li class="{nav_class}"><a class="{link_class}" target="_blank" href="{url}"><i class="{icon}"></i><span>{text}</span></a></li>""")
     else:
-        return mark_safe(f"""<li class="{nav_class}"><a class="{link_class}" href="{url}"><i class="bi bi-{icon}"></i><span>{text}</span></a></li>""")
+        return mark_safe(f"""<li class="{nav_class}"><a class="{link_class}" href="{url}"><i class="{icon}"></i><span>{text}</span></a></li>""")

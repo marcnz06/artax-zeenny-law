@@ -26,4 +26,10 @@ class User(AbstractUser):
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}".strip()
 
+    def get_clearance(self):
+        for user_group in self.groups.values_list('name', flat=True):
+            return user_group
+        if self.is_superuser:
+            return 'System Administrator'
+
 
