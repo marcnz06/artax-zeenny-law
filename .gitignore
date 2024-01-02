@@ -1,5 +1,6 @@
 /media/
 /static/
-logs/app.log
-logs/books.log
-logs/users.log
+*.log
+__pycache__/
+*.pyc
+books/report-templates/book-query-edit.docx
