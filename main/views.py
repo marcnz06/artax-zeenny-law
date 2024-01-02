@@ -210,6 +210,10 @@ def profile(request, username):
         current_user.phone = request.POST.get("phone")
         current_user.email = request.POST.get("email")
         current_user.about = request.POST.get("about")
+        current_user.twitter_url = request.POST.get("twitter_url")
+        current_user.facebook_url = request.POST.get("facebook_url")
+        current_user.insta_url = request.POST.get("insta_url")
+        current_user.linkedin_url = request.POST.get("linkedin_url")
         current_user.save()
         user_logger.info(
             f"User @{request.user.username} (User ID: {request.user.pk}) edited his profile on {datetime.now()}.")
