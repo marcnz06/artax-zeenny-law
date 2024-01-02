@@ -15,10 +15,10 @@ class User(AbstractUser):
     address = models.TextField()
     phone = PhoneNumberField(null=True, region="LB")
     date_of_registration = models.DateField(default=datetime.today)
-    twitter_url = models.URLField(default="#")
-    facebook_url = models.URLField(default="#")
-    insta_url = models.URLField(default="#")
-    linkedin_url = models.URLField(default="#")
+    twitter_url = models.URLField(default="https://twitter.com/")
+    facebook_url = models.URLField(default="https://facebook.com/")
+    insta_url = models.URLField(default="https://instagram.com/")
+    linkedin_url = models.URLField(default="https://linkedin.com/in/")
 
     def __str__(self):
         return f"@{self.username}"
