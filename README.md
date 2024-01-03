@@ -1,8 +1,9 @@
 Brian Yu [brian@cs.harvard.edu](mailto:brian@cs.harvard.edu)  
 David J. Malan [malan@harvard.edu](mailto:malan@harvard.edu)
 # Harvard University - CS50 Web Programming with Python and Javascript
-## ARTAX - Capstone project by Marc Nadim Zeenny
-Project Name: Artax  
+## The Advanced Ressource Tracking And Execution System (ARTAX)  
+
+Project Name: The Advanced Ressource Tracking And Execution System (ARTAX)  
 Project Completed on: Monday, September 11, 2023  
 [Marc's me50 GitHub](https://github.com/me50/marcnz06.git)  
 [Video Presentation of the web app]('https://youtu.be/2uyHknmOke4')   
