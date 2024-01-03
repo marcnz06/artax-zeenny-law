@@ -38,7 +38,7 @@ def paginator_books(request, books):
     return page_obj
 
 
-@permission_required("artax.change_book", raise_exception=True)
+@permission_required("books.change_book", raise_exception=True)
 def remove_book_summary(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     if request.method == 'POST':
@@ -49,7 +49,7 @@ def remove_book_summary(request, book_id):
     return redirect('books:show_book', book_id=book_id)
 
 
-@permission_required("artax.change_book", raise_exception=True)
+@permission_required("books.change_book", raise_exception=True)
 def remove_book_cover(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     if request.method == 'POST':
@@ -60,7 +60,7 @@ def remove_book_cover(request, book_id):
     return redirect('books:show_book', book_id=book_id)
 
 
-@permission_required("artax.change_book", raise_exception=True)
+@permission_required("books.change_book", raise_exception=True)
 def change_book_summary(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     book_summary = request.FILES.get('bookSummary')
@@ -73,7 +73,7 @@ def change_book_summary(request, book_id):
     return redirect('books:show_book', book_id=book_id)
 
 
-@permission_required("artax.change_book", raise_exception=True)
+@permission_required("books.change_book", raise_exception=True)
 def change_book_cover(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     book_cover = request.FILES.get("bookCover")
@@ -96,7 +96,7 @@ def new_book(request):
     types, authors, locations, languages = Type.objects.all(), Author.objects.all().order_by('name'), Location.objects.all().order_by(
         "code"), Language.objects.all()
     if request.method == "POST":
-        if not request.user.has_perm("artax.add_book"):
+        if not request.user.has_perm("books.add_book"):
             raise PermissionDenied
         else:
             if Book.objects.filter(title=request.POST.get("bookTitle")).first():
@@ -256,13 +256,14 @@ def query_books_by(request):
             return response
 
 
+@permission_required("books.delete_book", raise_exception=True)
 @login_required(login_url="login")
 def show_book(request, book_id):
     book_record = get_object_or_404(Book, pk=book_id)
     book_title = request.POST.get("title")
     types, authors, locations, languages = Type.objects.all(), Author.objects.all().order_by('name'), Location.objects.all(), Language.objects.all()
     if request.method == "POST":
-        if not request.user.has_perm("artax.change_book"):
+        if not request.user.has_perm("books.change_book"):
             raise PermissionDenied
         target_book = Book.objects.filter(title=str(request.POST.get("title")).strip(" "))
         if target_book.exists():
@@ -300,7 +301,7 @@ def show_book(request, book_id):
                                                                      })
 
 
-@permission_required("artax.delete_book", raise_exception=True)
+@permission_required("books.delete_book", raise_exception=True)
 @login_required(login_url="login")
 def delete_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
