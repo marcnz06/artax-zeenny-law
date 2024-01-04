@@ -1,7 +1,7 @@
 # main/management/commands/check_user_permissions.py
-
 from django.core.management.base import BaseCommand
-from main.models import User  # Replace 'yourapp' with the actual name of your app
+from main.models import User
+
 
 class Command(BaseCommand):
     help = 'Check permissions and groups of a user by username'
