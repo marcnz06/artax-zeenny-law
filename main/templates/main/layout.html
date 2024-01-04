@@ -136,12 +136,12 @@
         {% nav_link 'books:book_queries' 'Query Books ' 'bi bi-search' %}
         {% if user.is_staff %}
             <hr>
-            <li class="nav-heading">Users</li>
+            <li class="nav-heading">Administrator</li>
+            {% nav_link 'admin:index' 'Admin Panel' 'bi bi-browser-edge' 'True' %}
             {% nav_link 'main:all_users' 'Users' 'ri-group-fill'%}
             {% nav_link 'main:register' 'Register' 'bi bi-person-plus' 'True' %}
             <hr>
             <li class="nav-heading">General</li>
-            {% nav_link 'admin:index' 'Admin Panel' 'bi bi-browser-edge' 'True' %}
         {% endif %}
         {% nav_link 'main:faq' 'F.A.Q' 'bi bi-question-circle' %}
         {% nav_link 'main:contact' 'Contact' 'bi bi-envelope' %}

@@ -221,8 +221,6 @@ def profile(request, username):
         user_logger.info(f"New User: {serialize('json', [current_user])}")
 
     context = {'target_user': user}
-    for user_group in user.groups.values_list('name', flat=True):
-        context['clearance'] = user_group
     return render(request, "main/users-profile.html", context=context)
 
 

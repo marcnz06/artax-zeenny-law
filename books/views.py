@@ -11,7 +11,7 @@ from django.core.serializers import serialize
 from docx2pdf import convert
 from django.conf import settings
 import logging
-import comtypes.client
+# import comtypes.client
 from docxtpl import DocxTemplate
 import os
 

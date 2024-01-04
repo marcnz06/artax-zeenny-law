@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import EmailValidator
+from django.db.models import Count
+from django.contrib.auth.models import Group
 
 
 class User(AbstractUser):
@@ -27,9 +29,7 @@ class User(AbstractUser):
         return f"{self.first_name} {self.last_name}".strip()
 
     def get_clearance(self):
-        for user_group in self.groups.values_list('name', flat=True):
+        for user_group in self.groups.annotate(num_permissions=Count('permissions')).order_by('-num_permissions'):
             return user_group
-        if self.is_superuser:
-            return 'System Administrator'
 
 
