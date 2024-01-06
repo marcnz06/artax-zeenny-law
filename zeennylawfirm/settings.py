@@ -33,7 +33,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'main',
     'books',
-    "phonenumber_field",
+    'cases',
+    'phonenumber_field',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
