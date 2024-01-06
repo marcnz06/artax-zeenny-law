@@ -6,3 +6,4 @@ __pycache__/
 books/report-templates/book-query-edit.docx
 *.sqlite3
 .idea/
+.DS_Store
